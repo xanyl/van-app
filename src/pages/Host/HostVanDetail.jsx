@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import HostVanLayout from "../../components/HostVanLayout";
 
 export default function HostVanDetail() {
   const [currentVan, setCurrentVan] = useState(null);
@@ -31,7 +32,11 @@ export default function HostVanDetail() {
             <h4>${currentVan.price}/day</h4>
           </div>
         </div>
+        <nav className="host-van-detail-nav">
+        <HostVanLayout />
+        </nav>
       </div>
+     
     </section>
   );
 }

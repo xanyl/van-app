@@ -5,6 +5,7 @@ export default function Dashboard() {
     <>
       <h1>Host Dashboard</h1>
       <Outlet />
+      
     </>
   );
 }
