@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import HostVanLayout from "../../components/HostVanLayout";
+import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 
 export default function HostVanDetail() {
   const [currentVan, setCurrentVan] = useState(null);
@@ -15,6 +14,11 @@ export default function HostVanDetail() {
   if (!currentVan) {
     return <h1>Loading...</h1>;
   }
+  const activeStyle = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "orange",
+  };
   return (
     <section>
       {/* <Link to="../vans" className="back-button"> */}
@@ -33,10 +37,29 @@ export default function HostVanDetail() {
           </div>
         </div>
         <nav className="host-van-detail-nav">
-        <HostVanLayout />
+          <NavLink
+            to="."
+            end // this is the same as exact={true}
+            style={({ isActive }) => (isActive ? activeStyle : null)}
+          >
+            Details
+          </NavLink>
+
+          <NavLink
+            to="price"
+            style={({ isActive }) => (isActive ? activeStyle : null)}
+          >
+            Pricing
+          </NavLink>
+          <NavLink
+            to="photo"
+            style={({ isActive }) => (isActive ? activeStyle : null)}
+          >
+            Photos
+          </NavLink>
         </nav>
+        <Outlet context={{ currentVan }}/>
       </div>
-     
     </section>
   );
 }
