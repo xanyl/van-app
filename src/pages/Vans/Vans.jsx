@@ -6,7 +6,7 @@ export default function Vans() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [searchParam, setSearchParams] = useSearchParams();
-  
+
   const typeFilter = searchParam.get("type");
   // console.log(searchParam.toString());
   useEffect(() => {
@@ -37,7 +37,13 @@ export default function Vans() {
 
   const vanElements = displayedVans.map((van) => (
     <div key={van.id} className="van-tile">
-      <Link to={van.id} state={{ search: `?${searchParam.toString()}` }}>
+      <Link
+        to={van.id}
+        state={{
+          search: `?${searchParam.toString()}`,
+          type: typeFilter,
+        }}
+      >
         <img src={van.imageUrl} />
         <div className="van-info">
           <h3>{van.name}</h3>
