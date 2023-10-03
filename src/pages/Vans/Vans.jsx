@@ -5,9 +5,9 @@ export default function Vans() {
   const [vans, setVans] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [searchParams] = useSearchParams();
+  const [searchParam, setSearchParams] = useSearchParams();
 
-  const typeFilter = searchParams.get("type");
+  const typeFilter = searchParam.get("type");
 
   useEffect(() => {
     fetch("/api/vans")
@@ -55,7 +55,7 @@ export default function Vans() {
     <div className="van-list-container">
       <h1>Explore Our Vans Options</h1>
       <div className="van-list-filter-buttons">
-        <Link to="?type=simple" className="van-type simple">
+        {/* <Link to="?type=simple" className="van-type simple">
           Simple
         </Link>
         <Link to="?type=luxury" className="van-type luxury">
@@ -66,7 +66,32 @@ export default function Vans() {
         </Link>
         <Link to="." className="van-type clear-filters">
           Clear filter
-        </Link>
+        </Link> */}
+
+        <button
+          onClick={() => setSearchParams("?type=simple")}
+          className="van-type simple"
+        >
+          Simple
+        </button>
+        <button
+          onClick={() => setSearchParams("?type=luxury")}
+          className="van-type luxury"
+        >
+          Luxury
+        </button>
+        <button
+          onClick={() => setSearchParams("?type=rugged")}
+          className="van-type rugged"
+        >
+          Rugged
+        </button>
+        <button
+          onClick={() => setSearchParams("")}
+          className="van-type clear-filters"
+        >
+          Clear filter
+        </button>
       </div>
       <div className="van-list">{vanElements}</div>
     </div>
