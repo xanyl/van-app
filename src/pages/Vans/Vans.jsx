@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import getVans from "../../api";
+import { getVans } from "../../api";
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
@@ -13,15 +13,12 @@ export default function Vans() {
   useEffect(() => {
     async function loadVans() {
       setLoading(true);
-      try{
+      try {
         const response = await getVans();
         setVans(response);
-      }catch(error){
-
-  
+      } catch (error) {
         setError(error);
-      }
-      finally{
+      } finally {
         setLoading(false);
       }
       setLoading(false);

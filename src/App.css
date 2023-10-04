@@ -499,6 +499,9 @@ i[class*='van-type-'] {
   color: white;
   font-family: "Inter", sans-serif;
 }
+.login-error{
+  color: red;
+}
 
 .footer-layout {
   background-color: #161616;

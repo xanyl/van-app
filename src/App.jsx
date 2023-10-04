@@ -18,6 +18,8 @@ import HostVanPricing from "./pages/Host/hostvan/HostVanPricing";
 import HostVanPhoto from "./pages/Host/hostvan/HostVanPhoto";
 import NotFoundPage from "./pages/NotFoundPage";
 import Login from "./pages/Login";
+import AuthRequired from "./components/AuthRequired";
+
 
 export default function App() {
   return (
@@ -29,17 +31,21 @@ export default function App() {
           <Route path="login" element={<Login />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetails />} />
-          <Route path="host" element={<HostLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="income" element={<Income />} />
-            <Route path="reviews" element={<Reviews />} />
-            <Route path="vans" element={<HostVans />} />
-            <Route path="vans/:id" element={<HostVanDetail />}>
-              <Route index element={<HostVanInfo />} />
-              <Route path="price" element={<HostVanPricing />} />
-              <Route path="photo" element={<HostVanPhoto />} />
+
+          <Route  element ={< AuthRequired/>}>
+            <Route path="host" element={<HostLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="income" element={<Income />} />
+              <Route path="reviews" element={<Reviews />} />
+              <Route path="vans" element={<HostVans />} />
+              <Route path="vans/:id" element={<HostVanDetail />}>
+                <Route index element={<HostVanInfo />} />
+                <Route path="price" element={<HostVanPricing />} />
+                <Route path="photo" element={<HostVanPhoto />} />
+              </Route>
             </Route>
-          </Route>
+          </Route> 
+
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
