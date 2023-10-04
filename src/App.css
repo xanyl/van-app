@@ -40,6 +40,23 @@ header a {
   font-weight: 600;
   padding: 5px 20px;
 }
+header .login-icon {
+  height: 18px;
+  width: 18px;
+}
+
+header .login-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+}
+
+main {
+  margin-bottom: 84px;
+}
 
 header a:hover {
   color: #161616;
