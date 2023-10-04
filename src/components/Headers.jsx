@@ -30,6 +30,12 @@ export default function Headers() {
         >
           Vans
         </NavLink>
+        <NavLink
+          to="/login"
+          style={({ isActive }) => (isActive ? activeStyle : null)}
+        >
+          Login
+        </NavLink>
       </nav>
     </header>
   );

@@ -79,6 +79,7 @@ createServer({
     this.logging = false;
 
     this.get("/vans", (schema) => {
+      
       return schema.vans.all();
     });
 
